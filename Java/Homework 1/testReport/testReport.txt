@@ -1,0 +1,224 @@
+// 1.DATE CLASS
+
+> Date date = new Date(35,15,2022);
+> date.getDay()
+0
+***This printed '0' because the day user inputted wasn't between 1 and 31.***
+> date.getMonth()
+0
+***This printed '0' because the month user inputted wasn't between 1 and 12.**
+
+> Date date1 = new Date(31,10,2022);
+> date1.getYear()
+2022
+> date1.getDay()
+31
+> date1.getMonth()
+10
+> date1.incrementDay();
+> date1.getDay()
+1
+> date1.getMonth()
+11
+> date1.toString()
+"1/11/2022"
+> Date date2 = new Date(31,10,1978);
+> date1.equals(date2)
+false
+*** Returned false because we incremented date1 so date1 is 1/11/2022 now ***
+> date2.incrementDay()
+> date2.toString()
+"1/11/1978"
+> date1.equals(date2)
+true
+*** Returned true even the years weren't equals. As requested. ***
+
+>  Date date3 = new Date(31,12,2022);
+> date3.toString()
+"31/12/2022"
+> date.incrementDay();
+> date3.toString()
+"1/1/2023"
+
+// 2.CASH CLASS
+
+> Cash c = new Cash(0.3);
+> c.getBalance()
+0.0
+> c.setBalance(300);
+> c.getBalance()
+300.0
+> c.getInterestRate()
+0.3
+> c.setInterestRate(0.4);
+> c.getInterestRate()
+0.4
+> c.transfer(100);
+> c.getBalance()
+200.0
+> c.processDay()
+> c.processDay()
+> c.getEarned()
+0.4383561643835617
+> c.processDay()
+> c.getEarned()
+0.6575342465753425
+> c.processMonth();
+> c.getEarned()
+0.0
+> c.getBalance()
+200.65753424657535
+
+
+// 3.SAVING CLASS
+
+> Savings x = new Savings(0.7);
+> x.getInterestRate()
+0.7
+> x.getBalance()
+0.0
+> x.deposit(500.25);
+> x.getBalance()
+500.25
+> x.withdraw(600)
+false
+> x.withdraw(400.15)
+true
+> x.getBalance()
+100.10000000000002
+
+// 4.LOAN CLASS
+
+> Loan l = new Loan(0.4,700,100);
+> l.getLoanLimit()
+700.0
+> l.setLoanLimit(800);
+> l.getLoanLimit()
+800.0
+> l.getOverDraftPenalty()
+100.0
+> l.setOverDraftPenalty(250)
+> l.getOverDraftPenalty()
+250.0
+> l.processDay()
+> l.getEarned()
+0.0
+> l.getBalance()
+0.0
+> l.setBalance(300)
+> l.getBalance()
+300.0
+> l.processDay();
+> l.getEarned()
+0.32876712328767127
+> l.processDay();
+> l.processDay();
+> l.getEarned()
+0.9863013698630139
+> l.getOverdrafted()
+false
+> l.processMonth();
+> l.getBalance()
+300.9863013698630139
+> l.setBalance(1000);
+> l.processDay();
+> l.getOverdrafted()
+true
+> l.processMonth()
+> l.getBalance()
+750.000
+0.4 : 800.0 : 250.0
+
+// 5.CUSTOMER CLASS
+> Savings s = new Savings(0.7)
+> Loan l = new Loan(0.3,1200,150);
+> Date d = new Date(20,12,2022);
+> Customer c = new Customer("Emre","Erkeles",s,l,d);
+> c.getFirstName()
+"Emre"
+> c.setFirstName("Yunus");
+> c.getFirstName()
+"Yunus"
+> c.getLastName()
+"Erkeles"
+> c.setLastName("Kaya");
+> c.getLastName()
+"Kaya"
+> c.getSavings()
+0.7
+> c.getLoan()
+0.3 : 1200.0 : 150.0
+> c.getDate()
+20/12/2022
+> Date d1 = new Date(30,12,2022);
+> c.setDate(d1);
+> c.getDate()
+30/12/2022
+> c.getSavings().getBalance()
+0.0
+> c.getSavings().setBalance(300);
+> c.getSavings().getBalance()
+300.0
+> c.getSavings().withdraw(400)
+false
+> c.getSavings().withdraw(200)
+true
+> c.getSavings().getBalance()
+100.0
+> c.incrementDate();
+> c.getDate()
+31/12/2022
+> c.getSavings().setBalance(300);
+> c.getLoan().setBalance(150);
+> c.currentValue()
+150.0
+> c.payLoan(50);
+> c.getLoan().getBalance()
+100
+> c.getLoan().getBalance()
+0.0
+> c.getSavings().setBalance(-50);
+> c.getLoan().setBalance(250);
+> c.getLoan().getBalance()
+250.0
+> c.incrementDate()
+> c.getLoan().getBalance()  **savingsBalance is less than 0 so loanBalance + savingsBalance
+200.0								    ^
+> c.getSavings().getEarned()                   |
+0.0                          **because savings balance setted to 0"
+> c.getLoan().getEarned()
+0.1643835616438356
+> c.getLoan().getBalance()
+200.1643835616438356        **Made processMonth because day was 31 so month changed***
+
+
+// IF SAVING BALANCE IS NOT LESS THAN 0 AND MONTH DIDN'T CHANGE \\
+> c.getSavings().setBalance(200);
+> c.getSavings().getBalance()
+200.0
+> c.getLoan().setBalance(300);
+> c.getLoan().getBalance()
+300.0
+> c.getDate()
+1/1/2023
+> c.incrementDate();
+> c.getDate()
+2/1/2023
+> c.getSavings().getBalance()
+200.0
+> c.getLoan().getBalance()
+300.0
+> c.getSavings().getEarned()
+0.149035616438356
+> c.getLoan().getEarned()
+0.09623712642137
+> c.getLoan().getBalance()
+300.0
+> c.getSavings().getBalance()  ***The month didn't change so processMonth wasn't applied.***
+200.0
+
+
+
+
+
+
