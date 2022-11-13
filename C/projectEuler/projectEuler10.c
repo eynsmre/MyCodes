@@ -1,14 +1,15 @@
 #include <stdio.h>
+#include <stdlib.h>
 
-#define LIMIT 2000000
-
-int arr[LIMIT];
+#define LIMIT 2000000L
 
 int main(){
 	
+	int *arr;
 	long long int i = 2,j = 2,k;
-	long long int sum;
-
+	unsigned long long int sum = 0ULL;
+	
+	arr = calloc(LIMIT,sizeof *arr);
 	
 	for(k=2;k<LIMIT;k++)
 		arr[k] = 1;
@@ -29,7 +30,8 @@ int main(){
 	for(k=2; k< LIMIT; k++)
 		if(arr[k] == 1) 
 			sum += k;
-			
+	
+	free(arr);
 	printf("%lld",sum);
 	
 	return 0;
