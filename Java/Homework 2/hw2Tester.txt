@@ -1,0 +1,64 @@
+// SAME PREFIX
+
+> HW2.samePrefix("","",0)
+true
+> HW2.samePrefix("","",1)
+false
+> HW2.samePrefix("a","a",1)
+true
+> HW2.samePrefix("a","a",2)
+false
+> HW2.samePrefix("a","b",1)
+false
+> HW2.samePrefix("This is same","This is not",7)
+true
+> HW2.samePrefix("This is same","This is not",8)
+true
+> HW2.samePrefix("This is same","This is not",9)
+false
+> HW2.samePrefix("This is same","This is same",11)
+true
+> HW2.samePrefix("This is same","This is same",50)
+false
+
+// REPEAT CHARS
+> HW2.repeatChars("",0)
+""
+> HW2.repeatChars("",1)
+""
+> HW2.repeatChars("",3)
+""
+> HW2.repeatChars("Hello!",0)
+""
+> HW2.repeatChars("Hello World!",1)
+"Hello! World"
+> HW2.repeatChars("Hello World!",3)
+"HHHeeellllllooo!!!   WWWooorrrlllddd"
+
+// COUNT WORDS
+> HW2.countWords("")
+0
+> HW2.countWords(" ")
+0
+> HW2.countWords("Hello Mr Orhan")
+3
+> HW2.countWords("Hello Mr Orhan  ")
+3
+> HW2.countWords(" Hello !=* ")
+2
+
+// SUBSEQUENCE
+> HW2.subSequence("","")
+true
+> HW2.subSequence("","  ")
+true
+> HW2.subSequence("","I am a hardworker")
+true
+> HW2.subSequence("aho","I am a hardworker")
+true
+> HW2.subSequence("oha","I am a hardworker")
+false
+> HW2.subSequence("I am a hardworker","I am a hardworker")
+true
+> HW2.subSequence("I am a hardworkerrrr","I am a hardworker")
+false
