@@ -1,0 +1,169 @@
+// SAME PREFIX
+// this method checks if the taken strings are same until the taken integer parameter.
+
+//this test checks if inputted strings are same until index 0.
+test0
+> HW2.samePrefix("","",0)
+true
+
+//this test checks if inputted strings are same until first index.
+test1
+> HW2.samePrefix("a","a",1)
+true
+
+//this test checks if method works correctly while taken integer input is more than 1.
+testMany
+> HW2.samePrefix("abcde","abcde",3)
+true
+
+testFirst
+> HW2.samePrefix("Hello Dear!","Hello Beauty!",1)
+true
+
+//this method checks if the taken strings are same until somewhere close to middle.
+testMiddle
+> HW2.samePrefix("This is same","This is not",7)
+true
+
+//this method checks if the result is correct if taken integer parameter is more than string lengths.
+testLast
+> HW2.samePrefix("This is same","This is same",50)
+false
+
+// TRIM SPACES FROM FRONT
+// this method delete space only before the first non-space character.
+
+//this test, tests what happens if there is no space and taken String parameter's length is 0.
+test0
+
+> HW2.trimSpacesFromFront("")
+""
+
+//this test checks what happens if there is one space in front.
+test1
+
+> HW2.trimSpacesFromFront(" M")
+"M"
+
+
+//this test checks if there are more than one spaces in front.
+testMany
+
+> HW2.trimSpacesFromFront("   X")
+"X"
+
+
+//this test checks what happens if there is one space before more than one non-space character.
+testFirst
+
+> HW2.trimSpacesFromFront(" MyNameIs")
+"MyNameIs"
+
+
+//this test checks what happens if there are more than one space before first non-space character
+//and between two words.
+testMiddle
+
+> HW2.trimSpacesFromFront("  Yunus  Emre")
+"Yunus  Emre"
+
+
+//this test checks what happens if there are more than one spaces before a non-space character 
+//and after a non-space character.
+
+> HW2.trimSpacesFromFront("   Erkeleş ")
+"Erkeleş "
+
+
+// REPEAT CHARS
+// this method repeats characters as much as taken integer value.
+
+//this test checks the result if taken string length or taken integer value is 0.
+test0:
+> HW2.repeatChars("",0)
+""
+
+//this test checks the result if taken integer value is 1.
+test1:
+> HW2.repeatChars("Stack",1)
+"Stack"
+
+//this test checks the result if taken integer value is more than 1.
+testMany:
+> HW2.repeatChars("How are you?",3)
+"HHHooowww   aaarrreee   yyyooouuu???"
+
+//this test checks if the result is correct if string length is more than 1 and taken integer value is 0.
+testFirst:
+> HW2.repeatChars("Geek",0)
+""
+
+
+
+// COUNT WORDS
+// this method counts there are how many words in the taken string parameter.
+
+//this test checks what happens if length of taken string parameter is 0.
+test0:
+> HW2.countWords("")
+0
+
+//this test checks what happens if length of taken string parameter is 1.
+test1:
+> HW2.countWords("a")
+0
+
+//this test checks what happens if length of taken string parameter is more than 1.
+testMany:
+> HW2.countWords("Hello Mr Orhan")
+3
+
+//this test checks if the result is correct if there is a space before first word.
+testFirst:
+> HW2.countWords(" Hello Mr Orhan")
+3
+
+//this test checks if non-alphabetic characters are counted.
+testMiddle:
+> HW2.countWords("Hello !=*")
+2
+
+//this test checks if the result is correct if there are a lot of spaces.
+testLast:
+> HW2.countWords(  "Hello    !=*  ")
+2
+
+
+// SUBSEQUENCE
+// this method takes two string parameters and check  
+// is first taken string is a subsequence of second string parameter
+
+// this test checks what happens if taken string parameters length are 0.
+test0:
+> HW2.subSequence("","")
+true
+
+// this test checks the result is correct if taken string parameters length are 1.
+test1:
+> HW2.subSequence("a","a")
+true
+
+// this test checks the result is correct if taken string parameters length are more than 1. 
+testMany:
+> HW2.subSequence("aho","I am a hardworker")
+true
+
+// this test checks if the result is correct if length of first string is 0 and length of second is 1.
+testFirst:
+> HW2.subSequence("","  x")
+true
+
+// this test checks if the result is correct strings are same.
+testMiddle:
+> HW2.subSequence("I am a hardworker","I am a hardworker")
+true
+
+//this test checks if the result is correct length of first string is more than second.
+testLast:
+> HW2.subSequence("I am a hardworkerrrr","I am a hardworker")
+false
