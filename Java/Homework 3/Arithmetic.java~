@@ -1,0 +1,171 @@
+public class Arithmetic {    
+  
+    /**
+     * Adds two objects of any of the following types: ComplexN, RealN, RationalN, IntegerN, NaturalN.
+     *
+     * If the objects are of different types, the result will be of the highest type. For example, if
+     * one object is a ComplexN and the other is a RationalN, the result will be a ComplexN.
+     *
+     * If either object is not of any of the above types, an ArithmeticException is thrown.
+     *
+     * @param first the first object to be added
+     * @param second the second object to be added
+     * @return the result of adding the two objects
+     * @throws ArithmeticException if either object is not of any of the above types
+     */
+    
+      public static Object add(Object first, Object second) {
+        if(first instanceof NaturalN && second instanceof NaturalN){
+          return new IntegerN(((NaturalN)first).getNumerator()+((NaturalN)second).getNumerator());
+        }  
+        else if(first instanceof IntegerN && second instanceof IntegerN){
+          return new IntegerN(((IntegerN)first).getNumerator()+((IntegerN)second).getNumerator());
+        }
+        else if(first instanceof RationalN && second instanceof RationalN){
+          int numerator = ((RationalN)first).getNumerator() * ((RationalN)second).getDenominator() + 
+            ((RationalN)second).getNumerator() * ((RationalN)first).getDenominator();
+          int denominator = ((RationalN)first).getDenominator() * ((RationalN)second).getDenominator();
+          return new RationalN(numerator,denominator);
+        }
+        else if(first instanceof RealN && second instanceof RealN){
+          return new RealN(((RealN)first).getRealPart()+((RealN)second).getRealPart());
+        }
+        else if(first instanceof ComplexN && second instanceof ComplexN){
+          return new ComplexN(((ComplexN)first).getRealPart()+((ComplexN)second).getRealPart(),
+                              ((ComplexN)first).getImaginaryPart()+((ComplexN)second).getImaginaryPart());
+        }
+        
+        else
+          throw new ArithmeticException("Types have to be some of these classes: ComplexN, RealN, RationalN, IntegerN, NaturalN");
+      }
+      
+      
+      /**
+       * Subtracts two objects of any of the following types: ComplexN, RealN, RationalN, IntegerN, NaturalN.
+       *
+       * If the objects are of different types, the result will be of the highest type. For example, if
+       * one object is a ComplexN and the other is a RationalN, the result will be a ComplexN.
+       *
+       * If either object is not of any of the above types, an ArithmeticException is thrown.
+       *
+       * If both objects are NaturalN, and the first object has a smaller value than the second, an
+       * ArithmeticException is thrown.
+       *
+       * @param first the object to be subtracted from
+       * @param second the object to subtract
+       * @return the result of subtracting the second object from the first
+       * @throws ArithmeticException if either object is not of any of the above types, or if the first
+       * object is a NaturalN with a smaller value than the second
+       */
+  
+      public static Object substract(Object first, Object second){
+        if( first instanceof NaturalN && second instanceof NaturalN){
+          if(((NaturalN)first).getNumerator() < ((NaturalN)second).getNumerator()){
+            throw new ArithmeticException("Substracting a larger natural number from a smaller one is not allowed.");
+          }
+          return new NaturalN(((NaturalN)first).getNumerator()-((NaturalN)second).getNumerator());
+        }
+        else if (first instanceof IntegerN && second instanceof IntegerN){
+          return new IntegerN(((IntegerN)first).getNumerator()-((IntegerN)second).getNumerator());
+        }
+        else if (first instanceof RationalN && second instanceof RationalN){
+          int numerator = ((RationalN)first).getNumerator() * ((RationalN)second).getDenominator() - 
+            ((RationalN)second).getNumerator() * ((RationalN)first).getDenominator();
+          int denominator = ((RationalN)first).getDenominator() * ((RationalN)second).getDenominator();
+          return new RationalN(numerator,denominator);
+        }
+        else if (first instanceof RealN && second instanceof RealN){
+          return new RealN(((RealN)first).getRealPart()-((RealN)second).getRealPart());
+        }
+        else if (first instanceof ComplexN && second instanceof ComplexN){
+          return new ComplexN(((ComplexN)first).getRealPart()-((ComplexN)second).getRealPart(),
+                              ((ComplexN)first).getImaginaryPart()-((ComplexN)second).getImaginaryPart());
+        }     
+        else
+          throw new ArithmeticException("Types have to be some of these classes: ComplexN, RealN, RationalN, IntegerN, NaturalN");
+      }
+      
+    /**
+     * Multiplies two objects of any of the following types: ComplexN, RealN, RationalN, IntegerN, NaturalN.
+     *
+     * If the objects are of different types, the result will be of the highest type. For example, if
+     * one object is a ComplexN and the other is a RationalN, the result will be a ComplexN.
+     *
+     * If either object is not of any of the above types, an ArithmeticException is thrown.
+     *
+     * @param first the first object to be multiplied
+     * @param second the second object to be multiplied
+     * @return the result of multipication of the two objects
+     * @throws ArithmeticException if either object is not of any of the above types
+     */
+      public static Object multiply(Object first, Object second){
+        if( first instanceof NaturalN && second instanceof NaturalN){
+          return new NaturalN(((NaturalN)first).getNumerator()*((NaturalN)second).getNumerator());
+        }
+        else if (first instanceof IntegerN && second instanceof IntegerN){
+          return new IntegerN(((IntegerN)first).getNumerator()*((IntegerN)second).getNumerator());
+        }
+        else if (first instanceof RationalN && second instanceof RationalN){
+          int numerator = ((RationalN)first).getNumerator() * ((RationalN)second).getNumerator();
+          int denominator = ((RationalN)first).getDenominator() * ((RationalN)second).getDenominator();
+          return new RationalN(numerator,denominator);
+        }
+        else if (first instanceof RealN && second instanceof RealN){
+          return new RealN(((RealN)first).getRealPart()*((RealN)second).getRealPart());
+        }
+        else if (first instanceof ComplexN && second instanceof ComplexN){
+          ComplexN c = (ComplexN) first;
+          ComplexN d = (ComplexN) second;
+          double real = c.getRealPart() * d.getRealPart() - c.getImaginaryPart() * d.getImaginaryPart();
+          double imag = c.getRealPart() * d.getImaginaryPart() + c.getImaginaryPart() * d.getRealPart();
+          return new ComplexN(real, imag);
+        }   
+        else
+          throw new ArithmeticException("Types have to be some of these classes: ComplexN, RealN, RationalN, IntegerN, NaturalN");
+      }
+      
+    /**
+     * Divides two objects of any of the following types: ComplexN, RealN, RationalN, IntegerN, NaturalN.
+     *
+     * If the objects are of different types, the result will be of the highest type. For example, if
+     * one object is a ComplexN and the other is a RationalN, the result will be a ComplexN.
+     *
+     * If either object is not of any of the above types, an ArithmeticException is thrown.
+     *
+     * @param first the first object to be dividend
+     * @param second the second object to be divisor
+     * @return the result of division of the two objects
+     * @throws ArithmeticException if either object is not of any of the above types
+     */
+      
+       public static Object divide(Object first, Object second){
+         if(((ComplexN)second).getRealPart() == 0.0)
+           throw new ArithmeticException("Dividing by 0 is not allowed.");
+         if( first instanceof NaturalN && second instanceof NaturalN){     
+           return new NaturalN(((NaturalN)first).getNumerator()/((NaturalN)second).getNumerator());
+         }
+         else if (first instanceof IntegerN && second instanceof IntegerN){
+           return new IntegerN(((IntegerN)first).getNumerator()/((IntegerN)second).getNumerator());
+         }  
+         else if (first instanceof RationalN && second instanceof RationalN){
+           int numerator = ((RationalN)first).getNumerator() * ((RationalN)second).getDenominator();
+           int denominator = ((RationalN)first).getDenominator() * ((RationalN)second).getNumerator();
+           return new RationalN(numerator,denominator);
+         }
+         else if (first instanceof RealN && second instanceof RealN){
+           return new RealN(((RealN)first).getRealPart()/((RealN)second).getRealPart());
+         }  
+         else if (first instanceof ComplexN && second instanceof ComplexN){
+           ComplexN c = (ComplexN) first;
+           ComplexN d = (ComplexN) second;
+           double realPart = (c.getRealPart() * d.getRealPart() + c.getImaginaryPart() * d.getImaginaryPart()) / (d.getRealPart() * d.getRealPart() + d.getImaginaryPart() * d.getImaginaryPart());
+           double imagPart = (c.getImaginaryPart() * d.getRealPart() - c.getRealPart() * d.getImaginaryPart()) / (d.getRealPart() * d.getRealPart() + d.getImaginaryPart() * d.getImaginaryPart());
+           return new ComplexN(realPart, imagPart);
+         }         
+        else
+          throw new ArithmeticException("Types have to be some of these classes: ComplexN, RealN, RationalN, IntegerN, NaturalN");
+      }
+  }
+      
+  
+  

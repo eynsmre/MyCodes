@@ -1,0 +1,1522 @@
+ComplexN: Class for complex numbers. Extends Object.
+
+> ComplexN c1 = new ComplexN(3,5)
+> ComplexN c2 = new ComplexN(2,-4)
+> ComplexN c3 = new ComplexN(-2,7)
+> ComplexN c4 = new ComplexN(-8,-6)
+> ComplexN c5 = new ComplexN(8,0)
+> ComplexN c6 = new ComplexN(0,8)
+
+toString(): This method returns a string representation of the complex number in the form a+bi. 
+For example, if the complex number has real part 3 and imaginary part 5, 
+the string returned by toString() would be "3.0+5.0i".
+
+> c1.toString()
+"3.0+5.0i"
+> c2.toString()
+"2.0-4.0i"
+> c3.toString()
+"-2.0+7.0i"
+> c4.toString()
+"-8.0-6.0i"
+> c5.toString()
+"8.0"
+> c6.toString()
+"0.0+8.0i"
+
+getRealPart(): This method returns the real part of the complex number as a double.
+
+> c1.getRealPart()
+3.0
+> c3.getRealPart()
+-2.0
+> c6.getRealPart()
+0.0
+
+getImaginaryPart(): This method returns the imaginary part of the complex number as a double.
+
+> c1.getImaginaryPart()
+5.0
+> c3.getImaginaryPart()
+-2.0
+> c5.getImaginaryPart()
+0.0
+
+
+equals(Object obj): This method takes another ComplexN object as an argument and returns true 
+if the two complex numbers are equal (if they have the same real and imaginary parts), and false otherwise.
+
+> c1.equals(c2)
+false
+> c1.equals(new ComplexN(3,5))
+true
+
+
+
+RealN: Class for real numbers. Extends ComplexN.
+
+RealN(double): Constructor for the RealN class. It takes a double value as an argument and creates 
+a new RealN object with that value as the real part and 0 as the imaginary part.
+
+> RealN r1 = new RealN(5)
+> RealN r2 = new RealN(-3)
+> RealN r3 = new RealN(0)
+
+toString(): The string is in the form "a", where 'a' is the value of the real number.
+Method is inherited from the ComplexN class, it is defined in the ComplexN class and is available to use in the RealN class as well
+> r1.toString()
+"5.0"
+> r2.toString()
+"-3.0"
+> r3.toString()
+"0.0"
+
+getRealPart(): Method is inherited from the ComplexN class, which means 
+it is defined in the ComplexN class and is available to use in the RealN class as well.
+
+> r1.getRealPart()
+5.0
+> r2.getRealPart()
+-3.0
+> r3.getRealPart()
+0.0
+
+getImaginaryPart():  Method is inherited from the ComplexN class, which means 
+it is defined in the ComplexN class and is available to use in the RealN class as well.
+
+> r3.getImaginaryPart()
+0.0
+> r2.getImaginaryPart()
+0.0
+> r1.getImaginaryPart()
+0.0
+> r1.equals(r2)
+false
+> r1.equals(new RealN(5))
+true
+
+
+
+RationalN: Class for rational numbers. Extends RealN.
+
+RationalN(int, int): This is the constructor for the RationalN class.
+It takes two integers as arguments: the numerator and the denominator of the rational number.
+The constructor creates a new RationalN object with these values and also calls the super constructor of the RealN class to set the real part of the RationalN object to the value of the rational number as a double.
+If the denominator is 0, the constructor throws an ArithmeticException.
+
+> RationalN rat1 = new RationalN(4,8)
+> RationalN rat2 = new RationalN(3,9)
+> RationalN rat3 = new RationalN(12,4)
+> RationalN rat4 = new RationalN(-8,3)
+> RationalN rat5 = new RationalN(8,-2)
+> RationalN rat6 = new RationalN(-8,4)
+> RationalN rat7 = new RationalN(-9,-3)
+
+> RationalN rat8 = new RationalN(-9,0)
+java.lang.ArithmeticException: The denominator is 0. Undefined.
+	at RationalN.<init>(RationalN.java:17)
+	
+> RationalN rat9 = new RationalN(0,5)
+> RationalN rat10 = new RationalN(11,1)
+
+
+toString(): This method returns a string representation of the RationalN object in the form "a/b", where a is the numerator and b is the denominator.
+The method first calls the gcd() method to find the greatest common divisor of the numerator and denominator, and then divides the numerator and denominator by this value to reduce the fraction to its simplest form. 
+If the denominator is 1 or the numerator is 0, the method returns only the numerator. If both the numerator and denominator are negative, the method returns the positive values of both.
+If only one of the numerator or denominator is negative, the method returns the absolute values of both with a negative sign in front of the numerator.
+
+> rat1.toString()
+"1/2"
+> rat2.toString()
+"1/3"
+> rat3.toString()
+"3"
+> rat4.toString()
+"-8/3"
+> rat5.toString()
+"-4"
+> rat6.toString()
+"-2"
+> rat7.toString()
+"3"
+> rat9.toString()
+"0"
+> rat10.toString()
+"11"
+
+
+getNumerator(): This method returns the numerator of the RationalN object as an integer.
+getDenominator(): This method returns the denominator of the RationalN object as an integer.
+
+> rat1.getNumerator()
+4
+> rat1.getDenominator()
+8
+> rat2.getNumerator()
+3
+> rat2.getDenominator()
+9
+> rat3.getNumerator()
+12
+> rat3.getDenominator()
+4
+> rat4.getNumerator()
+-8
+> rat4.getDenominator()
+3
+> rat5.getNumerator()
+8
+> rat5.getDenominator()
+-2
+> rat6.getNumerator()
+-8
+> rat6.getDenominator()
+4
+> rat7.getNumerator()
+-9
+> rat7.getDenominator()
+-3
+
+> rat8.getNumerator()
+Static Error: Undefined name 'rat8'
+
+> rat9.toString()
+"0"
+> rat9.getNumerator()
+0
+> rat9.getDenominator()
+5
+> rat10.getNumerator()
+11
+> rat10.getDenominator()
+1
+
+
+getRealPart(): Method is inherited from the ComplexN class, which means 
+it is defined in the ComplexN class and is available to use in the RationalN class as well.
+getImaginaryPart(): Method is inherited from the ComplexN class, which means 
+it is defined in the ComplexN class and is available to use in the RationalN class as well.
+
+> rat10.getRealPart()
+11.0
+> rat10.getImaginaryPart()
+0.0
+> rat4.getRealPart()
+-2.666666666666667
+> rat4.getImaginaryPart()
+0.0
+
+
+equals(Object obj): Method is inherited from the ComplexN class, which means 
+it is defined in the ComplexN class and is available to use in the RationalN class as well.
+
+> rat1.equals(rat2)
+false
+> rat1.equals(rat3)
+false
+> rat3.equals(rat7)
+true
+> rat3.equals(new ComplexN(3,0))
+true
+> rat3.equals(new ComplexN(3,4))
+false
+> rat3.equals(new RealN(3))
+true
+> rat3.equals(new RealN(5))
+false
+
+
+
+IntegerN: Class for integer numbers. Extends RationalN class.
+
+IntegerN(int): This is the constructor for the IntegerN class. 
+It takes an integer as an argument and creates a new IntegerN object with that value. 
+The constructor also calls the super constructor of the RationalN class to set the numerator and denominator of the IntegerN object.
+> IntegerN a = new IntegerN(3)
+> IntegerN b = new IntegerN(-3)
+
+getIntValue(): This method returns the value of the IntegerN object as an integer.
+
+> a.getIntValue()
+3
+> b.getIntValue()
+-3
+
+
+toString(), equals(Object obj), getRealPart(), getImaginaryPart(), getNumerator(), getDenominator(): 
+Methods are inherited from the ComplexN class or RationalN class, which means 
+it is defined in the ComplexN or RationalN class and is available to use in the IntegerN class as well.
+
+> a.toString()
+"3"
+> b.toString()
+"-3"
+> a.equals(3)
+false
+> a.equals(new IntegerN(3))
+true
+> b.getRealPart()
+-3.0
+> b.getImaginaryPart()
+0.0
+> b.getDenominator()
+1
+> b.getNumerator()
+-3
+
+
+NaturalN: Class for natural numbers. Extends IntegerN.
+
+NaturalN(int): This is the constructor for the NaturalN class. It takes an integer as an argument and creates a new NaturalN object with that value.
+ The constructor also calls the super constructor of the IntegerN class to set the value of the NaturalN object. If the value is less than 0, the constructor throws an ArithmeticException.
+> NaturalN n1 = new NaturalN(3)
+> NaturalN n2 = new NaturalN(0)
+> NaturalN n3 = new NaturalN(-3)
+java.lang.ArithmeticException: Natural numbers cannot be lower than 0.
+	at NaturalN.<init>(NaturalN.java:13)
+
+
+Method is inherited from the IntegerN class, which means 
+it is defined in the IntegerN class and is available to use in the RationalN class as well.
+> n1.getIntValue()
+3
+
+Inherited...
+> n1.toString()
+"3"
+> n1.getNumerator()
+3
+> n1.getDenominator()
+1
+> n1.getDoubleValue()
+3.0
+> n1.getRealPart()
+3.0
+> n1.getImaginaryPart()
+0.0
+> n1.equals(new NaturalN(3))
+true
+> n1.equals(new NaturalN(2))
+false
+> n2.toString()
+"0"
+> n2.getIntValue()
+0
+
+
+
+Arithmetic Class: Extends Object. It contains methods of addition, substraction, multipication and division for NaturalN, IntegerN, RationalN, RealN, ComplexN.
+It also provides them to make these operations between themselves.
+
+add(Object first, Object second): The method takes two objects and adds the first to the second
+	if both objects are NaturalN, returns NaturalN;
+else if both objects are IntegerN, returns IntegerN;
+else if both objects are RationalN, returns RationalN;
+else if both objects are RealN, returns RealN;
+else if both objects are ComplexN, returns ComplexN.
+
+If types are different,
+For example: If first parameter's type is NaturalN and second one is ComplexN
+Method returns a ComplexN. Because NaturalN is lower in hierarchy, it means NaturalN is also a ComplexN.
+So last condition will be true.
+
+> Arithmetic.add(c1,c2).getClass()
+class ComplexN
+> Arithmetic.add(c1,rat1).getClass()
+class ComplexN
+> Arithmetic.add(n1,c1).getClass()
+class ComplexN
+> Arithmetic.add(rat3,c1).getClass()
+class ComplexN
+> Arithmetic.add(r1,rat1).getClass()
+class RealN
+> Arithmetic.add(a,r1).getClass()
+class RealN
+> Arithmetic.add(rat1,c).getClass()
+class RationalN
+> Arithmetic.add(n1,rat4).getClass()
+class RationalN
+> Arithmetic.add(a,b).getClass()
+class IntegerN
+> Arithmetic.add(n1,n1).getClass()
+class NaturalN
+
+
+> Arithmetic.add(c1,c2)
+5.0+1.0i
+> Arithmetic.add(c1,c3)
+1.0+12.0i
+> Arithmetic.add(c1,c4)
+-5.0-1.0i
+> Arithmetic.add(c1,c5)
+11.0+5.0i
+> Arithmetic.add(c1,c6)
+3.0+13.0i
+> Arithmetic.add(c2,c3)
+0.0+3.0i
+> Arithmetic.add(c2,c4)
+-6.0-10.0i
+> Arithmetic.add(c2,c5)
+10.0-4.0i
+> Arithmetic.add(c2,c6)
+2.0+4.0i
+> Arithmetic.add(c3,c4)
+-10.0+1.0i
+> Arithmetic.add(c3,c5)
+6.0+7.0i
+> Arithmetic.add(c3,c6)
+-2.0+15.0i
+> Arithmetic.add(c4,c5)
+0.0-6.0i
+> Arithmetic.add(c4,c6)
+-8.0+2.0i
+> Arithmetic.add(c5,c5)
+16.0
+> Arithmetic.add(c5,c6)
+8.0+8.0i
+> Arithmetic.add(c6,c6)
+0.0+16.0i
+> Arithmetic.add(c1,r1)
+8.0+5.0i
+> Arithmetic.add(c1,r2)
+0.0+5.0i
+> Arithmetic.add(c2,r2)
+-1.0-4.0i
+> Arithmetic.add(c2,r3)
+2.0-4.0i
+> Arithmetic.add(c3,r5)
+Static Error: Undefined name 'r5'
+> Arithmetic.add(c5,r3)
+8.0
+> Arithmetic.add(c6,r3)
+0.0+8.0i
+> Arithmetic.add(c6,r2)
+-3.0+8.0i
+> Arithmetic.add(c4,r1)
+-3.0-6.0i
+> Arithmetic.add(c4,rat1)
+-7.5-6.0i
+> Arithmetic.add(c5,rat1)
+8.5
+> Arithmetic.add(c5,rat3)
+11.0
+> Arithmetic.add(c6,rat2)
+0.3333333333333333+8.0i
+> Arithmetic.add(c7,rat2)
+Static Error: Undefined name 'c7'
+> Arithmetic.add(c5,rat2)
+8.333333333333334
+> Arithmetic.add(c5,rat4)
+5.333333333333334
+> Arithmetic.add(c5,a)
+11.0
+> Arithmetic.add(c5,b)
+5.0
+> Arithmetic.add(c3,a)
+1.0+7.0i
+> Arithmetic.add(c3,b)
+-5.0+7.0i
+> Arithmetic.add(c3,n1)
+1.0+7.0i
+
+
+> Arithmetic.add(r1,rat1)
+5.5
+> Arithmetic.add(r1,rat2)
+5.333333333333333
+> Arithmetic.add(r1,rat3)
+8.0
+> Arithmetic.add(r1,rat4)
+2.3333333333333335
+> Arithmetic.add(r1,rat5)
+1.0
+> Arithmetic.add(r1,rat6)
+3.0
+> Arithmetic.add(r2,rat6)
+-5.0
+> Arithmetic.add(r3,rat6)
+-2.0
+> Arithmetic.add(r3,rat3)
+3.0
+> Arithmetic.add(r2,rat3)
+0.0
+> Arithmetic.add(r1,rat3)
+8.0
+> Arithmetic.add(r1,a)
+8.0
+> Arithmetic.add(r1,b)
+2.0
+> Arithmetic.add(r2,b)
+-6.0
+> Arithmetic.add(r3,b)
+-3.0
+> Arithmetic.add(r3,a)
+3.0
+> Arithmetic.add(r3,b)
+-3.0
+> Arithmetic.add(r3,n1)
+3.0
+> Arithmetic.add(r,n1)
+Static Error: Undefined name 'r'
+> Arithmetic.add(r2,n1)
+0.0
+> Arithmetic.add(r1,n1)
+8.0
+> Arithmetic.add(rat1,a)
+7/2
+> Arithmetic.add(rat2,a)
+10/3
+> Arithmetic.add(rat3,a)
+6
+> Arithmetic.add(rat3,b)
+0
+> Arithmetic.add(rat2,b)
+-8/3
+> Arithmetic.add(rat1,b)
+-5/2
+> Arithmetic.add(rat1,n1)
+7/2
+> Arithmetic.add(rat2,n1)
+10/3
+> Arithmetic.add(rat3,n1)
+6
+> Arithmetic.add(a,n1)
+6
+> Arithmetic.add(b,n1)
+0
+
+
+
+substract(Object first, Object second): Method takes two object and substracts second one from first one.
+	if both objects are NaturalN, returns NaturalN;
+else if both objects are IntegerN, returns IntegerN;
+else if both objects are RationalN, returns RationalN;
+else if both objects are RealN, returns RealN;
+else if both objects are ComplexN, returns ComplexN.
+
+If types are different,
+For example: If first parameter's type is NaturalN and second one is ComplexN
+Method returns a ComplexN. Because NaturalN is lower in hierarchy, it means NaturalN is also a ComplexN. Like it is for real.
+So last condition will be true.
+
+
+> Arithmetic.substract(c1,c2).getClass()
+class ComplexN
+> Arithmetic.substract(c1,rat1).getClass()
+class ComplexN
+> Arithmetic.substract(n1,c1).getClass()
+class ComplexN
+> Arithmetic.substract(rat3,c1).getClass()
+class ComplexN
+> Arithmetic.substract(r1,rat1).getClass()
+class RealN
+> Arithmetic.substract(a,r1).getClass()
+class RealN
+> Arithmetic.substract(rat1,c).getClass()
+class RationalN
+> Arithmetic.substract(n1,rat4).getClass()
+class RationalN
+> Arithmetic.substract(a,b).getClass()
+class IntegerN
+> Arithmetic.substract(n1,n1).getClass()
+class NaturalN
+
+
+> Arithmetic.substract(c1,r1)
+-2.0+5.0i
+> Arithmetic.substract(c2,r1)
+-3.0-4.0i
+> Arithmetic.substract(c3,r1)
+-7.0+7.0i
+> Arithmetic.substract(c4,r1)
+-13.0-6.0i
+> Arithmetic.substract(c6,r1)
+-5.0+8.0i
+> Arithmetic.substract(c6,r2)
+3.0+8.0i
+> Arithmetic.substract(c3,r2)
+1.0+7.0i
+> Arithmetic.substract(c5,r3)
+8.0
+> Arithmetic.substract(c5,r1)
+3.0
+> Arithmetic.substract(c6,r2)
+3.0+8.0i
+> Arithmetic.substract(c6,r1)
+-5.0+8.0i
+> Arithmetic.substract(c6,r3)
+0.0+8.0i
+> Arithmetic.substract(c1,rat1)
+2.5+5.0i
+> 
+> Arithmetic.substract(c1,rat2)
+2.6666666666666665+5.0i
+> Arithmetic.substract(c1,rat3)
+0.0+5.0i
+> Arithmetic.substract(c1,rat4)
+5.666666666666666+5.0i
+> Arithmetic.substract(c1,rat5)
+7.0+5.0i
+> Arithmetic.substract(c1,rat6)
+5.0+5.0i
+> Arithmetic.substract(c1,rat7)
+0.0+5.0i
+> Arithmetic.substract(c1,rat9)
+3.0+5.0i
+> Arithmetic.substract(c1,rat10)
+-8.0+5.0i
+> Arithmetic.substract(c2,rat10)
+-9.0-4.0i
+> Arithmetic.substract(c2,rat3)
+-1.0-4.0i
+> Arithmetic.substract(c2,rat4)
+4.666666666666666-4.0i
+> Arithmetic.substract(c2,rat1)
+1.5-4.0i
+> Arithmetic.substract(c3,rat1)
+-2.5+7.0i
+> Arithmetic.substract(c3,rat3)
+-5.0+7.0i
+> Arithmetic.substract(c3,rat4)
+0.6666666666666665+7.0i
+> Arithmetic.substract(c3,rat6)
+0.0+7.0i
+> Arithmetic.substract(c5,rat6)
+10.0
+> Arithmetic.substract(c5,rat3)
+5.0
+> Arithmetic.substract(c5,rat2)
+7.666666666666667
+> Arithmetic.substract(c6,rat2)
+-0.3333333333333333+8.0i
+> Arithmetic.substract(c6,rat3)
+-3.0+8.0i
+> Arithmetic.substract(c6,rat4)
+2.6666666666666665+8.0i
+> Arithmetic.substract(c6,rat7)
+-3.0+8.0i
+> Arithmetic.substract(c6,rat9)
+0.0+8.0i
+> Arithmetic.substract(r1,c1)
+2.0-5.0i
+> Arithmetic.substract(r1,c2)
+3.0+4.0i
+> Arithmetic.substract(r1,c3)
+7.0-7.0i
+> Arithmetic.substract(r1,c4)
+13.0+6.0i
+> Arithmetic.substract(r1,c5)
+-3.0
+> Arithmetic.substract(r1,c6)
+5.0-8.0i
+> Arithmetic.substract(r2,c1)
+-6.0-5.0i
+> Arithmetic.substract(r2,c3)
+-1.0-7.0i
+> Arithmetic.substract(r2,c5)
+-11.0
+> Arithmetic.substract(r2,c6)
+-3.0-8.0i
+> 
+> Arithmetic.substract(r3,c1)
+-3.0-5.0i
+> Arithmetic.substract(r3,c3)
+2.0-7.0i
+> 
+> Arithmetic.substract(r3,c5)
+-8.0
+> Arithmetic.substract(r3,c4)
+8.0+6.0i
+> Arithmetic.substract(r3,c2)
+-2.0+4.0i
+> Arithmetic.substract(r3,rat1)
+-0.5
+> Arithmetic.substract(r3,rat2)
+-0.3333333333333333
+> Arithmetic.substract(r3,rat3)
+-3.0
+> Arithmetic.substract(r2,rat3)
+-6.0
+> Arithmetic.substract(r2,rat5)
+1.0
+> Arithmetic.substract(r2,rat6)
+-1.0
+> Arithmetic.substract(r2,rat7)
+-6.0
+> Arithmetic.substract(r2,rat9)
+-3.0
+> Arithmetic.substract(r3,rat9)
+0.0
+> Arithmetic.substract(r3,rat7)
+-3.0
+> Arithmetic.substract(r3,rat5)
+4.0
+> 
+> Arithmetic.substract(r3,rat5)
+4.0
+> Arithmetic.substract(r3,rat6)
+2.0
+> Arithmetic.substract(r3,rat1)
+-0.5
+> Arithmetic.substract(rat1,c1)
+-2.5-5.0i
+> Arithmetic.substract(rat1,c2)
+-1.5+4.0i
+> Arithmetic.substract(rat1,c3)
+2.5-7.0i
+> Arithmetic.substract(rat1,c4)
+8.5+6.0i
+> Arithmetic.substract(rat1,c5)
+-7.5
+> Arithmetic.substract(rat1,c6)
+0.5-8.0i
+> Arithmetic.substract(rat1,c7)
+Static Error: Undefined name 'c7'
+> Arithmetic.substract(rat2,c1)
+-2.6666666666666665-5.0i
+> Arithmetic.substract(rat2,c3)
+2.3333333333333335-7.0i
+> Arithmetic.substract(rat2,c5)
+-7.666666666666667
+> Arithmetic.substract(rat2,c6)
+0.3333333333333333-8.0i
+> Arithmetic.substract(rat3,c6)
+3.0-8.0i
+> Arithmetic.substract(rat3,c1)
+0.0-5.0i
+> Arithmetic.substract(rat3,c3)
+5.0-7.0i
+> Arithmetic.substract(rat3,c4)
+11.0+6.0i
+> Arithmetic.substract(rat3,c5)
+-5.0
+> Arithmetic.substract(rat4,c2)
+-4.666666666666666+4.0i
+> Arithmetic.substract(rat4,c3)
+-0.6666666666666665-7.0i
+> Arithmetic.substract(rat4,c4)
+5.333333333333334+6.0i
+> Arithmetic.substract(rat4,c5)
+-10.666666666666666
+> Arithmetic.substract(rat4,c6)
+-2.6666666666666665-8.0i
+> Arithmetic.substract(rat5,c6)
+-4.0-8.0i
+> Arithmetic.substract(rat5,c4)
+4.0+6.0i
+> Arithmetic.substract(rat5,c2)
+-6.0+4.0i
+> Arithmetic.substract(rat5,c1)
+-7.0-5.0i
+> Arithmetic.substract(rat5,c3)
+-2.0-7.0i
+> Arithmetic.substract(rat6,c3)
+0.0-7.0i
+> Arithmetic.substract(rat6,c5)
+-10.0
+> Arithmetic.substract(rat6,c6)
+-2.0-8.0i
+> Arithmetic.substract(rat7,c1)
+0.0-5.0i
+> Arithmetic.substract(rat7,c2)
+1.0+4.0i
+> Arithmetic.substract(rat7,c3)
+5.0-7.0i
+> Arithmetic.substract(rat7,c4)
+11.0+6.0i
+> Arithmetic.substract(rat7,c5)
+-5.0
+> Arithmetic.substract(rat7,c6)
+3.0-8.0i
+> Arithmetic.substract(rat8,c2)
+Static Error: Undefined name 'rat8'
+> Arithmetic.substract(rat9,c2)
+-2.0+4.0i
+> Arithmetic.substract(rat9,c3)
+2.0-7.0i
+> Arithmetic.substract(rat9,c4)
+8.0+6.0i
+> Arithmetic.substract(rat9,c5)
+-8.0
+> Arithmetic.substract(rat9,c6)
+0.0-8.0i
+> Arithmetic.substract(rat10,c6)
+11.0-8.0i
+> Arithmetic.substract(rat10,c4)
+19.0+6.0i
+> Arithmetic.substract(rat10,c2)
+9.0+4.0i
+> Arithmetic.substract(rat1,r1)
+-4.5
+> Arithmetic.substract(rat1,r2)
+3.5
+> Arithmetic.substract(rat1,r3)
+0.5
+> Arithmetic.substract(rat2,r3)
+0.3333333333333333
+> Arithmetic.substract(rat3,r2)
+6.0
+> Arithmetic.substract(rat4,r1)
+-7.666666666666666
+> Arithmetic.substract(rat5,r2)
+-1.0
+> Arithmetic.substract(rat3,r2)
+6.0
+> Arithmetic.substract(rat6,r2)
+1.0
+> Arithmetic.substract(rat6,r1)
+-7.0
+> Arithmetic.substract(rat7,r1)
+-2.0
+> Arithmetic.substract(rat9,r2)
+3.0
+> Arithmetic.substract(rat1,a)
+-5/2
+> Arithmetic.substract(rat1,b)
+7/2
+> Arithmetic.substract(rat2,b)
+10/3
+> Arithmetic.substract(rat3,b)
+6
+> Arithmetic.substract(rat4,a)
+-17/3
+> Arithmetic.substract(rat5,a)
+-7
+> Arithmetic.substract(rat6,a)
+-5
+> Arithmetic.substract(rat6,b)
+1
+> Arithmetic.substract(rat7,b)
+6
+> Arithmetic.substract(rat7,a)
+0
+> Arithmetic.substract(rat9,a)
+-3
+> Arithmetic.substract(rat10,a)
+8
+> Arithmetic.substract(rat3,n1)
+0
+> Arithmetic.substract(rat7,n1)
+0
+> Arithmetic.substract(rat10,n1)
+8
+> Arithmetic.substract(rat2,n1)
+-8/3
+> Arithmetic.substract(rat1,n1)
+-5/2
+> Arithmetic.substract(rat3,n1)
+0
+> Arithmetic.substract(rat4,n1)
+-17/3
+> Arithmetic.substract(rat5,n1)
+-7
+> Arithmetic.substract(a,n1)
+0
+> Arithmetic.substract(b,n1)
+-6
+> Arithmetic.substract(b,c1)
+-6.0-5.0i
+> Arithmetic.substract(b,c2)
+-5.0+4.0i
+> Arithmetic.substract(b,c3)
+-1.0-7.0i
+> Arithmetic.substract(b,c4)
+5.0+6.0i
+> Arithmetic.substract(a,c5)
+-5.0
+> Arithmetic.substract(a,c6)
+3.0-8.0i
+> Arithmetic.substract(a,c2)
+1.0+4.0i
+> Arithmetic.substract(a,c1)
+0.0-5.0i
+> Arithmetic.substract(a,c3)
+5.0-7.0i
+> Arithmetic.substract(a,r1)
+-2.0
+> Arithmetic.substract(a,r2)
+6.0
+> Arithmetic.substract(a,r3)
+3.0
+> Arithmetic.substract(b,r3)
+-3.0
+> Arithmetic.substract(b,r2)
+0.0
+> Arithmetic.substract(b,r1)
+-8.0
+> Arithmetic.substract(b,rat1)
+-7/2
+> Arithmetic.substract(b,rat3)
+-6
+> Arithmetic.substract(b,rat5)
+1
+> Arithmetic.substract(a,rat2)
+8/3
+> Arithmetic.substract(a,rat4)
+17/3
+> Arithmetic.substract(a,rat6)
+5
+> Arithmetic.substract(a,rat10)
+-8
+> Arithmetic.substract(b,b)
+0
+> Arithmetic.substract(b,a)
+-6
+> Arithmetic.substract(a,a)
+0
+> Arithmetic.substract(a,b)
+6
+> Arithmetic.substract(a,n1)
+0
+> Arithmetic.substract(b,n1)
+-6
+> Arithmetic.substract(n1,n1)
+0
+
+
+multiply(Object first, Object second): Method takes two objects and multiply first one by second one.
+	if both objects are NaturalN, returns NaturalN;
+else if both objects are IntegerN, returns IntegerN;
+else if both objects are RationalN, returns RationalN;
+else if both objects are RealN, returns RealN;
+else if both objects are ComplexN, returns ComplexN.
+
+If types are different,
+For example: If first parameter's type is NaturalN and second one is ComplexN
+Method returns a ComplexN. Because NaturalN is lower in hierarchy, it means NaturalN is also a ComplexN. Like it is for real.
+So last condition will be true.
+
+> Arithmetic.multiply(c1,c2).getClass()
+class ComplexN
+> Arithmetic.multiply(c1,rat1).getClass()
+class ComplexN
+> Arithmetic.multiply(n1,c1).getClass()
+class ComplexN
+> Arithmetic.multiply(rat3,c1).getClass()
+class ComplexN
+> Arithmetic.multiply(r1,rat1).getClass()
+class RealN
+> Arithmetic.multiply(a,r1).getClass()
+class RealN
+> Arithmetic.multiply(rat1,c).getClass()
+class RationalN
+> Arithmetic.multiply(n1,rat4).getClass()
+class RationalN
+> Arithmetic.multiply(a,b).getClass()
+class IntegerN
+> Arithmetic.multiply(n1,n1).getClass()
+class NaturalN
+
+> Arithmetic.multiply(c1,c1)
+-16.0+30.0i
+> Arithmetic.multiply(c1,c2)
+26.0-2.0i
+> Arithmetic.multiply(c1,c3)
+-41.0+11.0i
+> Arithmetic.multiply(c1,c4)
+6.0-58.0i
+> Arithmetic.multiply(c1,c5)
+24.0+40.0i
+> Arithmetic.multiply(c1,c6)
+-40.0+24.0i
+> Arithmetic.multiply(c1,c7)
+Static Error: Undefined name 'c7'
+> Arithmetic.multiply(c2,c2)
+-12.0-16.0i
+> Arithmetic.multiply(c2,c3)
+24.0+22.0i
+> 
+> Arithmetic.multiply(c2,c4)
+-40.0+20.0i
+> Arithmetic.multiply(c2,c5)
+16.0-32.0i
+> Arithmetic.multiply(c2,c6)
+32.0+16.0i
+> Arithmetic.multiply(c3,c6)
+-56.0-16.0i
+> Arithmetic.multiply(c3,c4)
+58.0-44.0i
+> Arithmetic.multiply(c4,c5)
+-64.0-48.0i
+> Arithmetic.multiply(c4,c4)
+28.0+96.0i
+> Arithmetic.multiply(c4,c6)
+48.0-64.0i
+> Arithmetic.multiply(c5,c6)
+0.0+64.0i
+> Arithmetic.multiply(c5,c5)
+64.0
+> Arithmetic.multiply(c6,c5)
+0.0+64.0i
+> Arithmetic.multiply(c6,c6)
+-64.0
+> Arithmetic.multiply(c1,r1)
+15.0+25.0i
+> Arithmetic.multiply(c2,r1)
+10.0-20.0i
+> Arithmetic.multiply(c1,r2)
+-9.0-15.0i
+> Arithmetic.multiply(c1,r3)
+0.0
+> Arithmetic.multiply(c2,r2)
+-6.0+12.0i
+> 
+> Arithmetic.multiply(c2,r3)
+0.0
+> Arithmetic.multiply(c2,r4)
+Static Error: Undefined name 'r4'
+> Arithmetic.multiply(c4,r1)
+-40.0-30.0i
+> Arithmetic.multiply(c4,r2)
+24.0+18.0i
+> Arithmetic.multiply(c4,r3)
+0.0
+> Arithmetic.multiply(c6,r3)
+0.0
+> Arithmetic.multiply(c5,r2)
+-24.0
+> Arithmetic.multiply(c4,r2)
+24.0+18.0i
+> 
+> Arithmetic.multiply(c4,r3)
+0.0
+> Arithmetic.multiply(c3,r3)
+-0.0
+> Arithmetic.multiply(c1,rat1)
+1.5+2.5i
+> Arithmetic.multiply(c1,rat2)
+1.0+1.6666666666666665i
+> Arithmetic.multiply(c1,rat3)
+9.0+15.0i
+> Arithmetic.multiply(c1,rat4)
+-8.0-13.333333333333332i
+> Arithmetic.multiply(c1,rat5)
+-12.0-20.0i
+> Arithmetic.multiply(c1,rat6)
+-6.0-10.0i
+> Arithmetic.multiply(c1,rat7)
+9.0+15.0i
+> Arithmetic.multiply(c1,rat9)
+0.0
+> Arithmetic.multiply(c1,rat10)
+33.0+55.0i
+> Arithmetic.multiply(c2,rat1)
+1.0-2.0i
+> Arithmetic.multiply(c2,rat2)
+0.6666666666666666-1.3333333333333333i
+> Arithmetic.multiply(c2,rat3)
+6.0-12.0i
+> Arithmetic.multiply(c2,rat4)
+-5.333333333333333+10.666666666666666i
+> Arithmetic.multiply(c2,rat5)
+-8.0+16.0i
+> Arithmetic.multiply(c2,rat6)
+-4.0+8.0i
+> Arithmetic.multiply(c2,rat7)
+6.0-12.0i
+> Arithmetic.multiply(c2,rat9)
+0.0
+> Arithmetic.multiply(c2,rat10)
+22.0-44.0i
+> Arithmetic.multiply(c3,rat2)
+-0.6666666666666666+2.333333333333333i
+> Arithmetic.multiply(c3,rat4)
+5.333333333333333-18.666666666666664i
+> Arithmetic.multiply(c3,rat6)
+4.0-14.0i
+> Arithmetic.multiply(c3,rat10)
+-22.0+77.0i
+> Arithmetic.multiply(c4,rat1)
+-4.0-3.0i
+> Arithmetic.multiply(c4,rat3)
+-24.0-18.0i
+> Arithmetic.multiply(c4,rat5)
+32.0+24.0i
+> Arithmetic.multiply(c4,rat7)
+-24.0-18.0i
+> Arithmetic.multiply(c4,rat9)
+0.0
+> Arithmetic.multiply(c5,rat1)
+4.0
+> Arithmetic.multiply(c5,rat2)
+2.6666666666666665
+> Arithmetic.multiply(c5,rat6)
+-16.0
+> Arithmetic.multiply(c5,rat8)
+Static Error: Undefined name 'rat8'
+> Arithmetic.multiply(c5,rat0)
+Static Error: Undefined name 'rat0'
+> Arithmetic.multiply(c5,rat10)
+88.0
+> Arithmetic.multiply(c6,rat1)
+0.0+4.0i
+> Arithmetic.multiply(c6,rat2)
+0.0+2.6666666666666665i
+> Arithmetic.multiply(c6,rat3)
+0.0+24.0i
+> Arithmetic.multiply(c6,rat4)
+-0.0-21.333333333333332i
+> Arithmetic.multiply(c6,rat5)
+-0.0-32.0i
+> Arithmetic.multiply(c6,rat6)
+-0.0-16.0i
+> Arithmetic.multiply(c6,rat7)
+0.0+24.0i
+> Arithmetic.multiply(c6,rat9)
+0.0
+> Arithmetic.multiply(c6,rat10)
+0.0+88.0i
+> Arithmetic.multiply(c1,a)
+9.0+15.0i
+> Arithmetic.multiply(c1,a)
+9.0+15.0i
+> Arithmetic.multiply(c1,b)
+-9.0-15.0i
+> Arithmetic.multiply(c2,a)
+6.0-12.0i
+> Arithmetic.multiply(c2,b)
+-6.0+12.0i
+> Arithmetic.multiply(c3,a)
+-6.0+21.0i
+> Arithmetic.multiply(c4,b)
+24.0+18.0i
+> Arithmetic.multiply(c5,b)
+-24.0
+> Arithmetic.multiply(c6,a)
+0.0+24.0i
+> Arithmetic.multiply(c3,n1)
+-6.0+21.0i
+> Arithmetic.multiply(c4,n1)
+-24.0-18.0i
+> Arithmetic.multiply(c1,n1)
+9.0+15.0i
+
+> Arithmetic.multiply(r1,c1)
+15.0+25.0i
+> Arithmetic.multiply(r1,c2)
+10.0-20.0i
+> Arithmetic.multiply(r1,c3)
+-10.0+35.0i
+> Arithmetic.multiply(r1,c4)
+-40.0-30.0i
+> Arithmetic.multiply(r1,c5)
+40.0
+> Arithmetic.multiply(r1,c6)
+0.0+40.0i
+> Arithmetic.multiply(r2,c2)
+-6.0+12.0i
+> Arithmetic.multiply(r2,c4)
+24.0+18.0i
+> Arithmetic.multiply(r2,c6)
+-0.0-24.0i
+> Arithmetic.multiply(r3,c1)
+0.0
+> Arithmetic.multiply(r3,c3)
+-0.0
+> Arithmetic.multiply(r3,c5)
+0.0
+> Arithmetic.multiply(r3,c7)
+Static Error: Undefined name 'c7'
+> Arithmetic.multiply(r1,rat1)
+2.5
+> Arithmetic.multiply(r1,rat2)
+1.6666666666666665
+> Arithmetic.multiply(r1,rat3)
+15.0
+> Arithmetic.multiply(r1,rat4)
+-13.333333333333332
+> Arithmetic.multiply(r1,rat5)
+-20.0
+> Arithmetic.multiply(r1,rat6)
+-10.0
+> Arithmetic.multiply(r2,rat1)
+-1.5
+> Arithmetic.multiply(r2,rat2)
+-1.0
+> Arithmetic.multiply(r2,rat3)
+-9.0
+> Arithmetic.multiply(r2,rat4)
+8.0
+> Arithmetic.multiply(r2,rat5)
+12.0
+> Arithmetic.multiply(r2,rat6)
+6.0
+> Arithmetic.multiply(r2,rat7)
+-9.0
+> Arithmetic.multiply(r2,rat9)
+-0.0
+> Arithmetic.multiply(r2,rat10)
+-33.0
+> Arithmetic.multiply(r2,r1)
+-15.0
+> Arithmetic.multiply(r2,r2)
+9.0
+> Arithmetic.multiply(r2,r3)
+-0.0
+> Arithmetic.multiply(r1,a)
+15.0
+> Arithmetic.multiply(r1,b)
+-15.0
+> Arithmetic.multiply(r2,a)
+-9.0
+> Arithmetic.multiply(r2,b)
+9.0
+> Arithmetic.multiply(r3,b)
+-0.0
+> Arithmetic.multiply(r3,a)
+0.0
+> Arithmetic.multiply(r3,n1)
+0.0
+> Arithmetic.multiply(r2,n1)
+-9.0
+> Arithmetic.multiply(r1,n1)
+15.0
+> Arithmetic.multiply(rat1,rat1)
+1/4
+> Arithmetic.multiply(rat1,rat2)
+1/6
+> Arithmetic.multiply(rat1,rat3)
+3/2
+> Arithmetic.multiply(rat1,rat4)
+-4/3
+> Arithmetic.multiply(rat1,rat5)
+-2
+> Arithmetic.multiply(rat2,rat5)
+-4/3
+> Arithmetic.multiply(rat2,rat6)
+-2/3
+> Arithmetic.multiply(rat3,rat6)
+-6
+> Arithmetic.multiply(rat3,rat7)
+9
+> Arithmetic.multiply(rat4,rat4)
+64/9
+> Arithmetic.multiply(rat4,rat8)
+Static Error: Undefined name 'rat8'
+> Arithmetic.multiply(rat4,rat10)
+-88/3
+> Arithmetic.multiply(rat5,rat10)
+-44
+> Arithmetic.multiply(rat5,rat9)
+0
+> Arithmetic.multiply(rat5,rat3)
+-12
+> Arithmetic.multiply(rat5,rat9)
+0
+> rat9.toString()
+"0"
+> Arithmetic.multiply(rat5,rat9).getClass()
+class RationalN
+> rat9.getRealPart()
+0.0
+> Arithmetic.multiply(cc1,rat9)
+Static Error: Undefined name 'cc1'
+> Arithmetic.multiply(rat6,rat1)
+-1
+> Arithmetic.multiply(rat6,rat10)
+-22
+> Arithmetic.multiply(rat6,rat3)
+-6
+> Arithmetic.multiply(rat6,rat5)
+8
+> Arithmetic.multiply(rat6,rat2)
+-2/3
+> Arithmetic.multiply(rat7,rat2)
+1
+> Arithmetic.multiply(rat7,rat3)
+9
+> Arithmetic.multiply(rat7,rat4)
+-8
+> Arithmetic.multiply(rat7,rat1)
+3/2
+> Arithmetic.multiply(rat7,rat10)
+33
+> Arithmetic.multiply(rat1,a)
+3/2
+> Arithmetic.multiply(rat1,b)
+-3/2
+> Arithmetic.multiply(rat3,b)
+-9
+> Arithmetic.multiply(rat3,a)
+9
+> Arithmetic.multiply(rat5,a)
+-12
+> Arithmetic.multiply(rat7,a)
+9
+> Arithmetic.multiply(rat2,a)
+1
+> Arithmetic.multiply(rat2,b)
+-1
+> Arithmetic.multiply(rat1,b)
+-3/2
+> Arithmetic.multiply(rat1,)
+Invalid top level statement
+> Arithmetic.multiply(rat1,a)
+3/2
+
+> Arithmetic.multiply(rat1,4)
+java.lang.ArithmeticException: Types have to be some of these classes: ComplexN, RealN, RationalN, IntegerN, NaturalN
+	at Arithmetic.multiply(Arithmetic.java:124)
+	at sun.reflect.GeneratedMethodAccessor2.invoke(Unknown Source)
+	
+> Arithmetic.multiply(rat1,rat4)
+-4/3
+> Arithmetic.multiply(rat1,a)
+3/2
+> Arithmetic.multiply(rat1,n1)
+3/2
+> Arithmetic.multiply(rat1,n2)
+Static Error: Undefined name 'n2'
+> Arithmetic.multiply(rat4,n1)
+-8
+> Arithmetic.multiply(rat7,n1)
+9
+> Arithmetic.multiply(rat9,n1)
+0
+> Arithmetic.multiply(a,c1)
+9.0+15.0i
+> Arithmetic.multiply(a,c3)
+-6.0+21.0i
+> Arithmetic.multiply(a,c5)
+Static Error: Undefined name 'c5'
+> Arithmetic.multiply(a,c2)
+6.0-12.0i
+> Arithmetic.multiply(b,c1)
+-9.0-15.0i
+> Arithmetic.multiply(b,r1)
+-15.0
+> Arithmetic.multiply(b,r3)
+-0.0
+> Arithmetic.multiply(a,rat3)
+9
+> Arithmetic.multiply(a,rat2)
+1
+> Arithmetic.multiply(a,rat4)
+-8
+> Arithmetic.multiply(a,rat5)
+-12
+> Arithmetic.multiply(a,rat6)
+-6
+> Arithmetic.multiply(a,rat7)
+9
+> Arithmetic.multiply(a,rat9)
+0
+> Arithmetic.multiply(a,rat10)
+33
+> Arithmetic.multiply(a,rat1)
+3/2
+> Arithmetic.multiply(b,rat1)
+-3/2
+> Arithmetic.multiply(b,rat4)
+8
+> Arithmetic.multiply(b,rat3)
+-9
+> Arithmetic.multiply(b,rat7)
+-9
+> Arithmetic.multiply(b,rat2)
+-1
+> Arithmetic.multiply(b,b)
+9
+> Arithmetic.multiply(b,a)
+-9
+> Arithmetic.multiply(a,a)
+9
+> Arithmetic.multiply(a,b)
+-9
+> Arithmetic.multiply(a,n1)
+9
+> Arithmetic.multiply(b,n1)
+-9
+
+
+divide(Object first, Object second): Method takes two objects and divides first one by second one.
+	if both objects are NaturalN, returns NaturalN;
+else if both objects are IntegerN, returns IntegerN;
+else if both objects are RationalN, returns RationalN;
+else if both objects are RealN, returns RealN;
+else if both objects are ComplexN, returns ComplexN.
+
+If types are different,
+For example: If first parameter's type is NaturalN and second one is ComplexN
+Method returns a ComplexN. Because NaturalN is lower in hierarchy, it means NaturalN is also a ComplexN. Like it is for real.
+So last condition will be true.
+
+
+> Arithmetic.divide(c1,c2).getClass()
+class ComplexN
+> Arithmetic.divide(c1,rat1).getClass()
+class ComplexN
+> Arithmetic.divide(n1,c1).getClass()
+class ComplexN
+> Arithmetic.divide(rat3,c1).getClass()
+class ComplexN
+> Arithmetic.divide(r1,rat1).getClass()
+class RealN
+> Arithmetic.divide(a,r1).getClass()
+class RealN
+> Arithmetic.divide(rat1,c).getClass()
+class RationalN
+> Arithmetic.divide(n1,rat4).getClass()
+class RationalN
+> Arithmetic.divide(a,b).getClass()
+class IntegerN
+> Arithmetic.divide(n1,n1).getClass()
+class NaturalN
+
+
+> Arithmetic.divide(c1,c4)
+-0.54-0.22i
+> Arithmetic.divide(c1,c5)
+0.375+0.625i
+> Arithmetic.divide(c1,c6)
+java.lang.ArithmeticException: Dividing by 0 is not allowed.
+	at Arithmetic.divide(Arithmetic.java:143)
+> Arithmetic.divide(c2,c3)
+-0.6037735849056604-0.11320754716981132i
+> Arithmetic.divide(c2,c4)
+0.08+0.44i
+> Arithmetic.divide(c2,c5)
+0.25-0.5i
+> Arithmetic.divide(c4,c5)
+-1.0-0.75i
+> Arithmetic.divide(c4,c6)
+java.lang.ArithmeticException: Dividing by 0 is not allowed.
+	at Arithmetic.divide(Arithmetic.java:143)
+> Arithmetic.divide(c6,c6)
+java.lang.ArithmeticException: Dividing by 0 is not allowed.
+	at Arithmetic.divide(Arithmetic.java:143)
+> Arithmetic.divide(c5,c5)
+1.0
+> Arithmetic.divide(c1,41)
+java.lang.ClassCastException: java.lang.Integer cannot be cast to ComplexN
+	at Arithmetic.divide(Arithmetic.java:142)
+> Arithmetic.divide(c1,41)
+java.lang.ClassCastException: java.lang.Integer cannot be cast to ComplexN
+	at Arithmetic.divide(Arithmetic.java:142)
+> Arithmetic.divide(c1,r1)
+0.6+1.0i
+> Arithmetic.divide(c1,r3)
+java.lang.ArithmeticException: Dividing by 0 is not allowed.
+	at Arithmetic.divide(Arithmetic.java:143)
+	at sun.reflect.GeneratedMethodAccessor3.invoke(Unknown Source)
+> Arithmetic.divide(c1,r2)
+-1.0-1.6666666666666667i
+> Arithmetic.divide(c3,r2)
+0.6666666666666666-2.3333333333333335i
+> Arithmetic.divide(c5,r2)
+-2.6666666666666665
+> Arithmetic.divide(c6,r1)
+0.0+1.6i
+> Arithmetic.divide(c4,r1)
+-1.6-1.2i
+> Arithmetic.divide(c1,r1)
+0.6+1.0i
+> Arithmetic.divide(c1,rat1)
+6.0+10.0i
+> Arithmetic.divide(c1,rat3)
+1.0+1.6666666666666667i
+> Arithmetic.divide(c1,rat5)
+-0.75-1.25i
+> Arithmetic.divide(c3,rat5)
+0.5-1.75i
+> Arithmetic.divide(c3,rat6)
+1.0-3.5i
+> Arithmetic.divide(c2,rat6)
+-1.0+2.0i
+> Arithmetic.divide(c2,rat2)
+6.0-12.0i
+> Arithmetic.divide(c2,rat8)
+Static Error: Undefined name 'rat8'
+> Arithmetic.divide(c2,rat9)
+java.lang.ArithmeticException: Dividing by 0 is not allowed.
+	at Arithmetic.divide(Arithmetic.java:143)
+	at sun.reflect.GeneratedMethodAccessor3.invoke(Unknown Source)
+> Arithmetic.divide(c2,rat10)
+0.18181818181818182-0.36363636363636365i
+> Arithmetic.divide(c5,rat10)
+0.7272727272727273
+> Arithmetic.divide(c3,a)
+-0.6666666666666666+2.3333333333333335i
+> Arithmetic.divide(c6,b)
+0.0-2.6666666666666665i
+> Arithmetic.divide(c2,n1)
+0.6666666666666666-1.3333333333333333i
+> Arithmetic.divide(rat1,c1)
+0.04411764705882353-0.07352941176470588i
+> Arithmetic.divide(rat1,c3)
+-0.018867924528301886-0.0660377358490566i
+> Arithmetic.divide(rat3,c3)
+-0.11320754716981132-0.39622641509433965i
+> Arithmetic.divide(rat5,c3)
+0.1509433962264151+0.5283018867924528i
+> Arithmetic.divide(rat5,c6)
+java.lang.ArithmeticException: Dividing by 0 is not allowed.
+	at Arithmetic.divide(Arithmetic.java:143)
+	at sun.reflect.GeneratedMethodAccessor3.invoke(Unknown Source)
+> Arithmetic.divide(rat5,c2)
+-0.4-0.8i
+> Arithmetic.divide(rat7,c2)
+0.3+0.6i
+> Arithmetic.divide(rat7,c1)
+0.2647058823529412-0.4411764705882353i
+> Arithmetic.divide(rat9,c1)
+0.0
+> Arithmetic.divide(rat10,c1)
+0.9705882352941176-1.6176470588235294i
+> Arithmetic.divide(rat1,r1)
+
+0.1
+> Arithmetic.divide(rat1,r3)
+java.lang.ArithmeticException: Dividing by 0 is not allowed.
+	at Arithmetic.divide(Arithmetic.java:143)
+	at sun.reflect.GeneratedMethodAccessor3.invoke(Unknown Source)
+> Arithmetic.divide(rat1,r2)
+-0.16666666666666666
+> Arithmetic.divide(rat5,r2)
+1.3333333333333333
+> Arithmetic.divide(rat5,a)
+-4/3
+> Arithmetic.divide(rat6,a)
+-2/3
+> Arithmetic.divide(rat6,b)
+2/3
+> Arithmetic.divide(rat7,n1)
+1
+> Arithmetic.divide(a,c3)
+-0.11320754716981132-0.39622641509433965i
+> Arithmetic.divide(a,c1)
+0.2647058823529412-0.4411764705882353i
+> Arithmetic.divide(b,c1)
+-0.2647058823529412+0.4411764705882353i
+> Arithmetic.divide(b,c5)
+-0.375
+> Arithmetic.divide(b,r2)
+1.0
+> Arithmetic.divide(b,r1)
+-0.6
+> Arithmetic.divide(b,rat1)
+-6
+> Arithmetic.divide(b,rat3)
+-1
+> Arithmetic.divide(b,rat5)
+3/4
+> Arithmetic.divide(a,rat2)
+9
+> Arithmetic.divide(a,a)
+1
+> Arithmetic.divide(a,b)
+-1
+> Arithmetic.divide(a,n1)
+1
+> Arithmetic.divide(b,n1)
+-1
+> Arithmetic.divide(n1,n1)
+1
+> Arithmetic.divide(n1,a)
+1
+> Arithmetic.divide(n1,c1)
+0.2647058823529412-0.4411764705882353i
+> Arithmetic.divide(n1,r1)
+0.6
+> Arithmetic.divide(n1,rat1)
+6

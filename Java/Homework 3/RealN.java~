@@ -1,0 +1,15 @@
+public class RealN extends ComplexN{
+  
+  /**
+   * Constructs a real number with the given value.
+   *
+   * @param num the value of the real number
+   */
+  public RealN(double num){
+    super(num,0);
+  }
+  
+  public double getDoubleValue(){
+    return getRealPart();
+  }
+}

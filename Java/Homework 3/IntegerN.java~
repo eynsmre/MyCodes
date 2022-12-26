@@ -1,0 +1,17 @@
+public class IntegerN extends RationalN{
+  
+  /**
+   * Constructs an integer with the given value.
+   *
+   * @param num the value of the integer
+   */
+  public IntegerN(int num){
+    super(num,1);
+  }
+  
+  
+  public int getIntValue(){
+    return getNumerator();
+  }
+  
+}
