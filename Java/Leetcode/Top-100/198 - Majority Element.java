@@ -1,0 +1,19 @@
+/**
+*Q:
+* 
+*Given an array nums of size n, return the majority element.
+*
+*The majority element is the element that appears more than ⌊n / 2⌋ times. You may assume that the majority element always exists in the array.
+**/
+
+/* This is the solution that my Algorithm teacher taught me last year. */
+class Solution {
+    public int majorityElement(int[] nums) {
+        // Sort the array using the built-in Java sort function
+        Arrays.sort(nums);
+        
+        // Return the element at the middle of the array
+        // This element will be the majority element if it occurs more than half the time
+        return nums[nums.length/2];
+    }
+}
