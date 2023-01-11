@@ -1,0 +1,26 @@
+struct ListNode getIntersectionNode(struct ListNode headA, struct ListNode headB) {
+     Create two pointers, tempA and tempB, which will be used to iterate through the linked lists
+    struct ListNode tempA = headA, tempB = headB;
+
+     Iterate through the linked list pointed to by tempB
+    while(tempB){
+         For each element in tempB, reset tempA to the head of list A
+        tempA = headA;
+        
+         Iterate through the linked list pointed to by tempA
+        while(tempA){
+             Check if the current element of tempA is the same as tempB
+            if(tempA == tempB)
+                 If they are the same, we have found the intersection node
+                return tempA;
+
+             Move to the next element in list A
+            tempA= tempA-next;
+        }
+         Move to the next element in list B
+        tempB= tempB-next;
+    }
+
+     If we reach the end of both lists without finding an intersection, return NULL
+    return NULL;
+}
